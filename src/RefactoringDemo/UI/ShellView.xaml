@@ -8,7 +8,7 @@
     <Grid>
         <Menu IsMainMenu="True" Margin="-2,-4,0,0" VerticalAlignment="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="E_xit"/>
+                <MenuItem Header="E_xit" x:Name="Exit" />
             </MenuItem>
         </Menu>
 

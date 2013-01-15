@@ -1,4 +1,5 @@
-﻿using Caliburn.Micro;
+﻿using System.Windows;
+using Caliburn.Micro;
 
 namespace RefactoringDemo.UI
 {
@@ -7,6 +8,11 @@ namespace RefactoringDemo.UI
         public ShellViewModel()
         {
             DisplayName = "Discount Calculator";
+        }
+
+        public void Exit()
+        {
+            Application.Current.Shutdown();
         }
     }
 }
