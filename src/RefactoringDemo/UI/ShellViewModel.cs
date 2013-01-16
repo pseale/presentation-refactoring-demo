@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using Caliburn.Micro;
 
@@ -19,8 +21,77 @@ namespace RefactoringDemo.UI
 
         public void Calculate()
         {
-            GrandTotal = "$" + new Random().Next(0, 5000).ToString("0.00");
+            List<int> books = new List<int>();
+            if (Book1Quantity > 0)
+                for (int i = 0; i < Book1Quantity; i++ )
+                    books.Add(1);
+            if (Book2Quantity > 0)
+                for (int i = 0; i < Book2Quantity; i++)
+                    books.Add(2);
+            if (Book3Quantity > 0)
+                for (int i = 0; i < Book3Quantity; i++)
+                    books.Add(3);
+            if (Book4Quantity > 0)
+                for (int i = 0; i < Book4Quantity; i++)
+                    books.Add(4);
+            if (Book5Quantity > 0)
+                for (int i = 0; i < Book5Quantity; i++)
+                    books.Add(5);
+
+            //if the book set is empty, return 0
+            if (books == null || books.Count() == 0)
+            {
+                GrandTotal = "$0.00";
+                return;
+            }
+
+            decimal runningTotal = 0m;
+            var remainingBooks = new List<int>(books);
+            //while we have books, add to the running total
+            while (remainingBooks.Count > 0)
+            {
+                //create a grouped list of books by book title
+                var groups = remainingBooks.GroupBy(bookId => bookId);
+
+                //find the # of book titles we have
+                var uniqueBooksCount = groups.Count();
+
+                //calculate the discount for this group
+                decimal percentDiscounted;
+                switch (uniqueBooksCount)
+                {
+                    case 2:
+                        percentDiscounted = 0.05m;
+                        break;
+                    case 3:
+                        percentDiscounted = 0.10m;
+                        break;
+                    case 4:
+                        percentDiscounted = 0.20m;
+                        break;
+                    case 5:
+                        percentDiscounted = 0.25m;
+                        break;
+                    default:
+                        percentDiscounted = 0m;
+                        break;
+                }
+
+                //add to the running total
+                runningTotal += uniqueBooksCount * 8m * (1m - percentDiscounted);
+
+                //remove one book for each title
+                foreach (var bookIdGroup in groups)
+                {
+                    int bookId = bookIdGroup.Key;
+                    remainingBooks.Remove(bookId);
+                }
+            }
+
+            //return the sum
+            GrandTotal = "$" + runningTotal.ToString("0.00");
         }
+
         private int _book1Quantity;
         public int Book1Quantity
         {
