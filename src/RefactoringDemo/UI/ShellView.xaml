@@ -4,13 +4,49 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+             MinWidth="500"
+             MinHeight="500">
     <Grid>
-        <Menu IsMainMenu="True" Margin="-2,-4,0,0" VerticalAlignment="Top">
-            <MenuItem Header="_File">
-                <MenuItem Header="E_xit" x:Name="Exit" />
-            </MenuItem>
-        </Menu>
+        <DockPanel LastChildFill="True">
+            <Menu DockPanel.Dock="Top" IsMainMenu="True">
+                <MenuItem Header="_File">
+                    <MenuItem Header="E_xit" x:Name="Exit" />
+                </MenuItem>
+            </Menu>
+            <!-- Use whatever panel you want here -->
+            <StackPanel>
+                <GroupBox Margin="10"  Grid.Row="1" Header="Shopping cart">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Book #1: "/>
+                            <TextBox x:Name="Book1Quantity" Width="28"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Book #2: "/>
+                            <TextBox x:Name="Book2Quantity" Width="28"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Book #3: "/>
+                            <TextBox x:Name="Book3Quantity" Width="28"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Book #4: "/>
+                            <TextBox x:Name="Book4Quantity" Width="28"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Book #5: "/>
+                            <TextBox x:Name="Book5Quantity" Width="28"/>
+                        </StackPanel>
 
+                        <Button Margin="10" HorizontalAlignment="Right" Content="_Calculate" x:Name="Calculate" Width="70" />
+                        <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label Content="Grand total: "/>
+                            <TextBox x:Name="GrandTotal" Width="100" IsEnabled="False" HorizontalContentAlignment="Right"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </DockPanel>
     </Grid>
 </UserControl>
