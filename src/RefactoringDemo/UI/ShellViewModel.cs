@@ -116,7 +116,6 @@ namespace RefactoringDemo.UI
             }
         }
 
-
         private int _book3Quantity;
         public int Book3Quantity
         {
@@ -129,7 +128,6 @@ namespace RefactoringDemo.UI
             }
         }
 
-
         private int _book4Quantity;
         public int Book4Quantity
         {
@@ -141,7 +139,6 @@ namespace RefactoringDemo.UI
                 NotifyOfPropertyChange(() => Book4Quantity);
             }
         }
-
 
         private int _book5Quantity;
         public int Book5Quantity
