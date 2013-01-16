@@ -14,6 +14,7 @@ namespace RefactoringDemo.UI
             Book3Quantity = 0;
             Book4Quantity = 0;
             Book5Quantity = 0;
+            UpdateRulesVisibility();
         }
 
         public void Calculate()
@@ -95,9 +96,79 @@ namespace RefactoringDemo.UI
             }
         }
 
+        private bool _isShowRulesChecked;
+        public bool IsShowRulesChecked
+        {
+            get { return _isShowRulesChecked; }
+            set
+            {
+                if (value.Equals(_isShowRulesChecked)) return;
+                _isShowRulesChecked = value;
+                UpdateRulesVisibility();
+                NotifyOfPropertyChange(() => IsShowRulesChecked);
+            }
+        }
+
+        private Visibility _rulesVisibility;
+        public Visibility RulesVisibility
+        {
+            get { return _rulesVisibility; }
+            set
+            {
+                if (value == _rulesVisibility) return;
+                _rulesVisibility = value;
+                NotifyOfPropertyChange(() => RulesVisibility);
+            }
+        }
+
+        private Visibility _calculatorVisibility;
+        public Visibility CalculatorVisibility
+        {
+            get { return _calculatorVisibility; }
+            set
+            {
+                if (value == _calculatorVisibility) return;
+                _calculatorVisibility = value;
+                NotifyOfPropertyChange(() => CalculatorVisibility);
+            }
+        }
+
+        private void UpdateRulesVisibility()
+        {
+            RulesVisibility = IsShowRulesChecked ? Visibility.Visible : Visibility.Collapsed;
+            CalculatorVisibility = !IsShowRulesChecked ? Visibility.Visible : Visibility.Collapsed;
+        }
+
         public void Exit()
         {
             Application.Current.Shutdown();
+        }
+
+        public string RulesText
+        {
+            get
+            {
+                return @" Book discount calculator rules:
+ 
+ 1 book     - no discount
+ 2 book set - 5%
+ 3 book set - 10%
+ 4 book set - 20%
+ 5 book set - 25%
+ 
+ Copies of the same book do NOT count toward a set. 
+ 
+ Examples: 
+ If you buy 5 copies of the same book, you get no discount.
+ If you buy one copy of book #1, #2, and #3, you get a 10% discount on all books.
+ If you buy two copies of book #1 and a copy of book #2, you get a 5% discount
+   on the two books, and no discount on the third book.";
+            }
+        }
+
+        public void ShowRules()
+        {
+            IsShowRulesChecked = true;
         }
     }
 }
