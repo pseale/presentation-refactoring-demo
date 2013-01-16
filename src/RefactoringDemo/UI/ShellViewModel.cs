@@ -27,8 +27,7 @@ namespace RefactoringDemo.UI
 
         private decimal CalculateGrandTotal()
         {
-            var books = GetBooksList();
-            return DiscountCalculator.Calculate(books);
+            return DiscountCalculator.Calculate(GetBooksList());
         }
 
         private List<int> GetBooksList()
