@@ -26,22 +26,7 @@ namespace RefactoringDemo.UI
 
         private decimal CalculateGrandTotal()
         {
-            var books = new List<int>();
-            if (Book1Quantity > 0)
-                for (int i = 0; i < Book1Quantity; i++)
-                    books.Add(1);
-            if (Book2Quantity > 0)
-                for (int i = 0; i < Book2Quantity; i++)
-                    books.Add(2);
-            if (Book3Quantity > 0)
-                for (int i = 0; i < Book3Quantity; i++)
-                    books.Add(3);
-            if (Book4Quantity > 0)
-                for (int i = 0; i < Book4Quantity; i++)
-                    books.Add(4);
-            if (Book5Quantity > 0)
-                for (int i = 0; i < Book5Quantity; i++)
-                    books.Add(5);
+            var books = GetBooksList();
 
             //if the book set is empty, return 0
             if (books == null || books.Count() == 0)
@@ -92,6 +77,27 @@ namespace RefactoringDemo.UI
 
             //return the sum
             return runningTotal;
+        }
+
+        private List<int> GetBooksList()
+        {
+            var books = new List<int>();
+            if (Book1Quantity > 0)
+                for (int i = 0; i < Book1Quantity; i++)
+                    books.Add(1);
+            if (Book2Quantity > 0)
+                for (int i = 0; i < Book2Quantity; i++)
+                    books.Add(2);
+            if (Book3Quantity > 0)
+                for (int i = 0; i < Book3Quantity; i++)
+                    books.Add(3);
+            if (Book4Quantity > 0)
+                for (int i = 0; i < Book4Quantity; i++)
+                    books.Add(4);
+            if (Book5Quantity > 0)
+                for (int i = 0; i < Book5Quantity; i++)
+                    books.Add(5);
+            return books;
         }
 
         private int _book1Quantity;
