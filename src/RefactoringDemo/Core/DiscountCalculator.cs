@@ -7,7 +7,6 @@ namespace RefactoringDemo.Core
     {
         public static decimal Calculate(IEnumerable<int> books)
         {
-
             //if the book set is empty, return 0
             if (books == null || books.Count() == 0)
                 return 0m;

@@ -22,12 +22,7 @@ namespace RefactoringDemo.UI
 
         public void Calculate()
         {
-            GrandTotal = "$" + CalculateGrandTotal();
-        }
-
-        private decimal CalculateGrandTotal()
-        {
-            return DiscountCalculator.Calculate(GetBooksList());
+            GrandTotal = "$" + DiscountCalculator.Calculate(GetBooksList());
         }
 
         private List<int> GetBooksList()
