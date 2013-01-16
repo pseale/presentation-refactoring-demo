@@ -40,10 +40,10 @@ namespace RefactoringDemo.Core
             return runningTotal;
         }
 
-        private static decimal GetDiscountForSetOfSize(int uniqueBooksCount)
+        private static decimal GetDiscountForSetOfSize(int bookSetSize)
         {
             decimal percentDiscounted;
-            switch (uniqueBooksCount)
+            switch (bookSetSize)
             {
                 case 2:
                     percentDiscounted = 0.05m;
@@ -61,6 +61,7 @@ namespace RefactoringDemo.Core
                     percentDiscounted = 0m;
                     break;
             }
+
             return percentDiscounted;
         }
     }
