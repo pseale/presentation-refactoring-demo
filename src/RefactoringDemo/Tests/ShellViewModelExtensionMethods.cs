@@ -7,11 +7,11 @@ namespace RefactoringDemo.Tests
     {
         public static void GrandTotalShouldEqual(this ShellViewModel viewModel, decimal expectedGrandTotal)
         {
-            decimal actualGrandTotal = GetTotalAmountFromViewModel(viewModel);
+            decimal actualGrandTotal = GetGrandTotalFrom(viewModel);
             Assert.AreEqual(expectedGrandTotal, actualGrandTotal);
         }
 
-        private static decimal GetTotalAmountFromViewModel(ShellViewModel viewModel)
+        private static decimal GetGrandTotalFrom(ShellViewModel viewModel)
         {
             if (string.IsNullOrWhiteSpace(viewModel.GrandTotal))
                 return 0m;
