@@ -84,23 +84,21 @@ namespace RefactoringDemo.UI
 
         private List<int> GetBookList()
         {
-            List<int> books = new List<int>();
-            if (Book1Quantity > 0)
-                for (int i = 0; i < Book1Quantity; i++)
-                    books.Add(1);
-            if (Book2Quantity > 0)
-                for (int i = 0; i < Book2Quantity; i++)
-                    books.Add(2);
-            if (Book3Quantity > 0)
-                for (int i = 0; i < Book3Quantity; i++)
-                    books.Add(3);
-            if (Book4Quantity > 0)
-                for (int i = 0; i < Book4Quantity; i++)
-                    books.Add(4);
-            if (Book5Quantity > 0)
-                for (int i = 0; i < Book5Quantity; i++)
-                    books.Add(5);
+            var books = new List<int>();
+            books.AddRange(CreateBooksFor(1, Book1Quantity));
+            books.AddRange(CreateBooksFor(2, Book2Quantity));
+            books.AddRange(CreateBooksFor(3, Book3Quantity));
+            books.AddRange(CreateBooksFor(4, Book4Quantity));
+            books.AddRange(CreateBooksFor(5, Book5Quantity));
             return books;
+        }
+
+        private IEnumerable<int> CreateBooksFor(int bookNumber, int quantity)
+        {
+            var list = new List<int>();
+            for (int i = 0; i < quantity; i++)
+                list.Add(bookNumber);
+            return list;
         }
 
         private int _book1Quantity;
