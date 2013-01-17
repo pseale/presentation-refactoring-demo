@@ -21,9 +21,16 @@ namespace RefactoringDemo.UI
 
         public void Calculate()
         {
+            decimal grandTotal = CalculateGrandTotal();
+            GrandTotal = "$" + grandTotal.ToString("0.00");
+        }
+
+        private decimal CalculateGrandTotal()
+        {
+
             List<int> books = new List<int>();
             if (Book1Quantity > 0)
-                for (int i = 0; i < Book1Quantity; i++ )
+                for (int i = 0; i < Book1Quantity; i++)
                     books.Add(1);
             if (Book2Quantity > 0)
                 for (int i = 0; i < Book2Quantity; i++)
@@ -41,8 +48,7 @@ namespace RefactoringDemo.UI
             //if the book set is empty, return 0
             if (books == null || books.Count() == 0)
             {
-                GrandTotal = "$0.00";
-                return;
+                return 0m;
             }
 
             decimal runningTotal = 0m;
@@ -89,7 +95,7 @@ namespace RefactoringDemo.UI
             }
 
             //return the sum
-            GrandTotal = "$" + runningTotal.ToString("0.00");
+            return runningTotal;
         }
 
         private int _book1Quantity;
