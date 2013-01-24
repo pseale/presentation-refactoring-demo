@@ -81,6 +81,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\Calculator.cs" />
     <Compile Include="Tests\AcceptanceTests.cs" />
     <Compile Include="Tests\ShellViewModelExtensionMethods.cs" />
     <Compile Include="UI\App.xaml.cs">
